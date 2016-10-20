@@ -1,0 +1,19 @@
+{
+  "name": "my-service",
+  "version": "1.0.0",
+  "description": "Serverless wrapper for...",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MY_ACCOUNT/MY_PROJECT.git"
+  },
+  "author": "ME",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "serverless-plugin-write-env-vars": "^1.0.1"
+  }
+}

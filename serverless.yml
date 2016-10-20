@@ -1,0 +1,35 @@
+service: my-service
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  profile: my-profile
+  iamRoleStatements:
+    $ref: ./iamRoleStatements.json
+
+functions:
+  doSomething:
+    handler: handler.doSomething
+    memory: 1024
+    timeout: 300
+    # events:
+    #   - http:
+    #       path: graphql
+    #       method: post
+    #       cors: true
+
+resources:
+  Resources:
+    $ref: ./cloudFormation.json
+
+custom:
+  defaultRegion: us-east-1
+  region: ${opt:region, self:custom.defaultRegion}
+  stage: ${opt:stage}
+  writeEnvVars:
+    SERVICE_NAME: ${self:service}
+    STAGE: ${self:custom.stage}
+    REGION: ${self:custom.region}
+
+plugins:
+  - serverless-plugin-write-env-vars
